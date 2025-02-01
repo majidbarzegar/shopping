@@ -14,7 +14,7 @@ import java.util.List;
 @Table(name = "TB_PRODUCT")
 @Getter
 @Setter
-@SequenceGenerator(name = "sequence", sequenceName = "PRODUCT_SEQ")
+@SequenceGenerator(name = "sequence", sequenceName = "PRODUCT_SEQ", allocationSize = 1)
 @NoArgsConstructor
 @AllArgsConstructor
 public class Product extends AbstractAuditable<Long> {

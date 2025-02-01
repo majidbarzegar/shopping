@@ -33,4 +33,9 @@ public class UserRatesProduct {
 
     @Column(nullable = false)
     private LocalDateTime ratedAt;
+
+    @PrePersist
+    protected void onCreate() {
+        this.ratedAt = LocalDateTime.now();
+    }
 }

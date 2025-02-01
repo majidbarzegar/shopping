@@ -28,4 +28,9 @@ public class UserLikesProduct {
 
     @Column(name = "liked_at", nullable = false, updatable = false)
     private LocalDateTime likedAt;
+
+    @PrePersist
+    protected void onCreate() {
+        this.likedAt = LocalDateTime.now();
+    }
 }

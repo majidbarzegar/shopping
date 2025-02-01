@@ -27,7 +27,6 @@ public class CommentServiceImpl implements CommentService {
         model.setComment(comment);
         model.setProduct(new Product(productId));
         model.setUser(new User(userId));
-        model.setCreateAt(LocalDateTime.now());
         repository.save(model);
     }
 

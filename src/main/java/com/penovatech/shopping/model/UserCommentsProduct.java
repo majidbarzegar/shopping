@@ -11,27 +11,31 @@ import java.time.LocalDateTime;
 @Table(name = "TB_USER_COMMENTS_PRODUCT")
 @Getter
 @Setter
-@SequenceGenerator(name = "sequence", sequenceName = "USER_COMMENTS_PRODUCT_SEQ")
 @NoArgsConstructor
 @AllArgsConstructor
+@SequenceGenerator(name = "sequence", sequenceName = "USER_COMMENTS_PRODUCT_SEQ", allocationSize = 1)
 public class UserCommentsProduct {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
     private Long id;
 
     @ManyToOne
-    @MapsId("userId")
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @ManyToOne
-    @MapsId("productId")
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
     @Column(nullable = false)
     private String comment;
 
-    @Column(nullable = false)
-    private LocalDateTime createAt;
+    @Column(nullable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = LocalDateTime.now();
+    }
 }

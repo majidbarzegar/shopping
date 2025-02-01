@@ -12,7 +12,7 @@ import lombok.Setter;
 @Table(name = "TB_BANNER")
 @Getter
 @Setter
-@SequenceGenerator(name = "sequence", sequenceName = "BANNER_SEQ")
+@SequenceGenerator(name = "sequence", sequenceName = "BANNER_SEQ", allocationSize = 1)
 @NoArgsConstructor
 public class Banner extends AbstractPersistable<Long> {
 

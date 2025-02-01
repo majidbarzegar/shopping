@@ -14,7 +14,7 @@ import java.util.List;
 @Table(name = "TB_CATEGORY")
 @Getter
 @Setter
-@SequenceGenerator(name = "sequence", sequenceName = "CATEGORY_SEQ")
+@SequenceGenerator(name = "sequence", sequenceName = "CATEGORY_SEQ", allocationSize = 1)
 @NoArgsConstructor
 @AllArgsConstructor
 public class Category extends AbstractPersistable<Long> {

@@ -16,7 +16,7 @@ public interface UserCommentsProductRepository extends JpaRepository<UserComment
     @Transactional
     void deleteById(Long id);
 
-    @Query("SELECT u FROM UserCommentsProduct u WHERE u.product.id = :productId ORDER BY u.createAt DESC")
+    @Query("SELECT u FROM UserCommentsProduct u WHERE u.product.id = :productId ORDER BY u.createdAt DESC")
     List<UserCommentsProduct> findByProductId(@Param("productId") Long productId);
 
     @Modifying
