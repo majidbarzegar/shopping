@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface ProductService extends AbstractService<Product, ProductCriteria, ProductDto, Long> {
 
-    Product save(ProductDto dto, MultipartFile file);
+    Product save(ProductDto dto, List<MultipartFile> files);
 
     List<Product> getNewest();
 

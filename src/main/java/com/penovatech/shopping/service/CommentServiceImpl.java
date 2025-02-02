@@ -24,7 +24,7 @@ public class CommentServiceImpl implements CommentService {
     @Transactional
     public void commentProduct(Long userId, Long productId, String comment) {
         UserCommentsProduct model = new UserCommentsProduct();
-        model.setComment(comment);
+        model.setText(comment);
         model.setProduct(new Product(productId));
         model.setUser(new User(userId));
         repository.save(model);

@@ -14,22 +14,24 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/product")
-public class ProductRestController extends AbstractRestController<Product, ProductCriteria, ProductDto, Long, ProductService> {
+public class ProductRestController /*extends AbstractRestController<Product, ProductCriteria, ProductDto, Long, ProductService>*/ {
 
     public ProductRestController(ProductService service, CommentService commentService) {
-        super(service);
         this.commentService = commentService;
+        this.service = service;
     }
 
     private final CommentService commentService;
+    private final ProductService service;
 
-    @PostMapping(value = "image", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResultDto<Product> save(@RequestParam("dto") String dtoJson,
-                                   @RequestParam("file") MultipartFile file) throws JsonProcessingException {
-        ProductDto dtoa = new ObjectMapper().readValue(dtoJson, ProductDto.class);
-        return new ResultDto<>(service.save(dtoa, file));
+                                   @RequestParam("file") List<MultipartFile> files) throws JsonProcessingException {
+        return new ResultDto<>(service.save(new ObjectMapper().readValue(dtoJson, ProductDto.class), files));
     }
 
     @PostMapping("/{productId}/like")

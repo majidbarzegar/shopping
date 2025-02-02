@@ -29,7 +29,7 @@ public class UserCommentsProduct {
     private Product product;
 
     @Column(nullable = false)
-    private String comment;
+    private String text;
 
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;

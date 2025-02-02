@@ -18,19 +18,27 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Product extends AbstractAuditable<Long> {
+
     public Product(Long id) {
         super(id);
     }
+
     private String title;
     private String description;
     private Long price;
-    private String imageUrl;
+
+    @ElementCollection
+    private List<String> imageUrls = new ArrayList<>();
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<UserLikesProduct> likedByUsers = new ArrayList<>();
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<UserRatesProduct> ratedByUsers = new ArrayList<>();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
+    private Category category;
 
     @Transient
     public long getLikeCount() {

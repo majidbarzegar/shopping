@@ -36,14 +36,14 @@ public class ProductServiceImpl extends AbstractServiceImpl<Product, ProductCrit
     private String uploadDir;
 
     @Override
-    public Product save(ProductDto dto, MultipartFile file) {
-        String imageUrl;
+    public Product save(ProductDto dto, List<MultipartFile> files) {
         try {
-            imageUrl = saveFile(file);
+            for (MultipartFile file : files) {
+                dto.addImageUrl(this.saveFile(file));
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        dto.setImageUrl(imageUrl);
         return super.save(dto);
     }
 
