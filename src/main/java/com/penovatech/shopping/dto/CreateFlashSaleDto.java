@@ -1,3 +1,4 @@
+
 package com.penovatech.shopping.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -10,13 +11,13 @@ import java.util.List;
 
 @Getter
 @Setter
-public class FlashSaleDto extends AbstractDto<Long> {
-    @JsonProperty("expired_at")
+public class CreateFlashSaleDto extends AbstractDto<Long> {
+    @JsonProperty("expire_at")
     private LocalDateTime expireAt;
 
     @JsonProperty("start_at")
     private LocalDateTime startAt;
 
-    @JsonProperty("products")
-    private List<ProductDto> productDtoList;
+    @JsonProperty("productIds")
+    private List<Long> productIdList;
 }

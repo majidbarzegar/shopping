@@ -9,9 +9,9 @@ import com.penovatech.shopping.repository.CategoryRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CategoryServiceImpl extends AbstractServiceImpl<Category, CategoryCriteria, CategoryDto, Long, CategoryRepository> implements CategoryService {
+public class CategoryServiceImpl extends AbstractServiceImpl<Category,Long, CategoryRepository> implements CategoryService {
     public CategoryServiceImpl(CategoryRepository repository,
                                CategoryMapper mapper) {
-        super(repository, mapper);
+        super(repository);
     }
 }

@@ -1,6 +1,7 @@
 package com.penovatech.shopping.service;
 
 import com.penovatech.common.base.service.AbstractService;
+import com.penovatech.common.base.service.AbstractSpecService;
 import com.penovatech.shopping.criteria.ProductCriteria;
 import com.penovatech.shopping.dto.ProductDto;
 import com.penovatech.shopping.model.Product;
@@ -8,9 +9,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
-public interface ProductService extends AbstractService<Product, ProductCriteria, ProductDto, Long> {
+public interface ProductService extends AbstractSpecService<Product, Long, ProductCriteria> {
 
-    Product save(ProductDto dto, List<MultipartFile> files);
+    Product save(Product dto, List<MultipartFile> files);
 
     List<Product> getNewest();
 

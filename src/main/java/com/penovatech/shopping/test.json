@@ -1,0 +1,229 @@
+{
+  "banners": [
+    {
+      "id": 1,
+      "banner": "https://m.media-amazon.com/images/I/614VOsGXsqL._SX1500_.jpg"
+    },
+    {
+      "id": 2,
+      "banner": "https://m.media-amazon.com/images/I/71kFc7PP3PL._SX3000_.jpg"
+    },
+    {
+      "id": 3,
+      "banner": "https://m.media-amazon.com/images/I/717Qv6Rdi+L._SX3000_.jpg"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Computer",
+      "parent": 0,
+      "icon": ""
+    },
+    {
+      "id": 2,
+      "name": "Electronics",
+      "parent": 0,
+      "icon": ""
+    },
+    {
+      "id": 3,
+      "name": "Arts & Crafts",
+      "parent": 0,
+      "icon": ""
+    },
+    {
+      "id": 4,
+      "name": "Automotive",
+      "parent": 0,
+      "icon": ""
+    },
+    {
+      "id": 5,
+      "name": "Baby",
+      "parent": 0,
+      "icon": ""
+    },
+    {
+      "id": 6,
+      "name": "Beauty and personal care",
+      "parent": 0,
+      "icon": ""
+    },
+    {
+      "id": 7,
+      "name": "Women's Fashion",
+      "parent": 0,
+      "icon": ""
+    },
+    {"title": "asus 01", "description": "asus 01 laptop", "price": 123456, "categoryId": 2},
+    {"title": "lenovo 01", "description": "lenovo 01 laptop", "price": 258741, "categoryId": 2},
+    {"title": "samsung 01", "description": "samsung 01 phone", "price": 365, "categoryId": 3},
+    {"title": "xiaomi 01", "description": "xiaomi 01 phone", "price": 154, "categoryId": 3},
+    {
+      "id": 12,
+      "name": "Luggage",
+      "parent": 0,
+      "icon": ""
+    },
+    {
+      "id": 13,
+      "name": "Movies & Television",
+      "parent": 0,
+      "icon": ""
+    },
+    {
+      "id": 14,
+      "name": "Pet supplies",
+      "parent": 0,
+      "icon": ""
+    },
+    {
+      "id": 15,
+      "name": "Sports and Outdoors",
+      "parent": 0,
+      "icon": ""
+    },
+    {
+      "id": 16,
+      "name": "Tools & Home Improvement",
+      "parent": 0,
+      "icon": ""
+    },
+    {
+      "id": 17,
+      "name": "Toys and Games",
+      "parent": 0,
+      "icon": ""
+    }
+  ],
+  "newest_product": [
+    {
+      "id": 1,
+      "title": "Nike model-934",
+      "description": "Nike model-934",
+      "price": 120,
+      "image": "https://www.deadstock.de/wp-content/uploads/2023/01/Jordan-1-Mid-Barely-Grape-DQ8423-501-dead-stock-titel-bild-.jpeg",
+      "likes": 0,
+      "isLike": false,
+      "rate": 3.5
+    },
+    {
+      "id": 2,
+      "title": "Nike model-934",
+      "description": "Nike model-934",
+      "price": 120,
+      "image": "https://www.deadstock.de/wp-content/uploads/2023/01/Jordan-1-Mid-Barely-Grape-DQ8423-501-dead-stock-titel-bild-.jpeg",
+      "likes": 0,
+      "isLike": false,
+      "rate": 3.5
+    },
+    {
+      "id": 3,
+      "title": "Nike model-934",
+      "description": "Nike model-934",
+      "price": 120,
+      "image": "https://www.deadstock.de/wp-content/uploads/2023/01/Jordan-1-Mid-Barely-Grape-DQ8423-501-dead-stock-titel-bild-.jpeg",
+      "likes": 0,
+      "isLike": false,
+      "rate": 3.5
+    },
+    {
+      "id": 4,
+      "title": "Shirt model-131",
+      "description": "Shirt model-131",
+      "price": 13,
+      "image": "https://img.ltwebstatic.com/images3_pi/2022/08/22/1661139363d0af2b9ebc4be1a701c62b3af5e237ef.webp",
+      "likes": 0,
+      "isLike": false,
+      "rate": 3.5
+    }
+  ],
+  "flash_sale": {
+    "expired_at": "2023-11-24T19:50:04.774834Z",
+    "products": [
+      {
+        "id": 1,
+        "title": "Nike model-934",
+        "description": "Nike model-934",
+        "price": 120,
+        "image": "https://www.deadstock.de/wp-content/uploads/2023/01/Jordan-1-Mid-Barely-Grape-DQ8423-501-dead-stock-titel-bild-.jpeg",
+        "likes": 0,
+        "isLike": false,
+        "rate": 3.5
+      },
+      {
+        "id": 2,
+        "title": "Nike model-934",
+        "description": "Nike model-934",
+        "price": 120,
+        "image": "https://www.deadstock.de/wp-content/uploads/2023/01/Jordan-1-Mid-Barely-Grape-DQ8423-501-dead-stock-titel-bild-.jpeg",
+        "likes": 0,
+        "isLike": false,
+        "rate": 3.5
+      },
+      {
+        "id": 3,
+        "title": "Nike model-934",
+        "description": "Nike model-934",
+        "price": 120,
+        "image": "https://www.deadstock.de/wp-content/uploads/2023/01/Jordan-1-Mid-Barely-Grape-DQ8423-501-dead-stock-titel-bild-.jpeg",
+        "likes": 0,
+        "isLike": false,
+        "rate": 3.5
+      },
+      {
+        "id": 4,
+        "title": "Shirt model-131",
+        "description": "Shirt model-131",
+        "price": 13,
+        "image": "https://img.ltwebstatic.com/images3_pi/2022/08/22/1661139363d0af2b9ebc4be1a701c62b3af5e237ef.webp",
+        "likes": 0,
+        "isLike": false,
+        "rate": 3.5
+      }
+    ]
+  },
+  "most_sale": [
+    {
+      "id": 1,
+      "title": "Nike model-934",
+      "description": "Nike model-934",
+      "price": 120,
+      "image": "https://www.deadstock.de/wp-content/uploads/2023/01/Jordan-1-Mid-Barely-Grape-DQ8423-501-dead-stock-titel-bild-.jpeg",
+      "likes": 0,
+      "isLike": false,
+      "rate": 3.5
+    },
+    {
+      "id": 2,
+      "title": "Nike model-934",
+      "description": "Nike model-934",
+      "price": 120,
+      "image": "https://www.deadstock.de/wp-content/uploads/2023/01/Jordan-1-Mid-Barely-Grape-DQ8423-501-dead-stock-titel-bild-.jpeg",
+      "likes": 0,
+      "isLike": false,
+      "rate": 3.5
+    },
+    {
+      "id": 3,
+      "title": "Nike model-934",
+      "description": "Nike model-934",
+      "price": 120,
+      "image": "https://www.deadstock.de/wp-content/uploads/2023/01/Jordan-1-Mid-Barely-Grape-DQ8423-501-dead-stock-titel-bild-.jpeg",
+      "likes": 0,
+      "isLike": false,
+      "rate": 3.5
+    },
+    {
+      "id": 4,
+      "title": "Shirt model-131",
+      "description": "Shirt model-131",
+      "price": 13,
+      "image": "https://img.ltwebstatic.com/images3_pi/2022/08/22/1661139363d0af2b9ebc4be1a701c62b3af5e237ef.webp",
+      "likes": 0,
+      "isLike": false,
+      "rate": 3.5
+    }
+  ]
+}

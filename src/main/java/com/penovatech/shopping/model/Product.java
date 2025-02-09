@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,6 +41,11 @@ public class Product extends AbstractAuditable<Long> {
     @JoinColumn(name = "category_id")
     private Category category;
 
+    @PrePersist
+    protected void onCreate() {
+        this.createdDate = LocalDateTime.now();
+    }
+
     @Transient
     public long getLikeCount() {
         return likedByUsers.size();
@@ -49,5 +55,12 @@ public class Product extends AbstractAuditable<Long> {
     public double getAverageRating() {
         return ratedByUsers.isEmpty() ? 0.0 :
                 ratedByUsers.stream().mapToDouble(UserRatesProduct::getRating).average().orElse(0.0);
+    }
+
+    public void addImageUrl(String imageUrl){
+        if(null == imageUrls){
+            imageUrls = new ArrayList<>();
+        }
+        imageUrls.add(imageUrl);
     }
 }

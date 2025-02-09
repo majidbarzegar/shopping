@@ -1,5 +1,6 @@
 package com.penovatech.shopping.repository;
 
+import com.penovatech.common.base.repository.AbstractJpaRepository;
 import com.penovatech.shopping.model.UserCommentsProduct;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface UserCommentsProductRepository extends JpaRepository<UserCommentsProduct, Long> {
+public interface UserCommentsProductRepository extends AbstractJpaRepository<UserCommentsProduct, Long> {
 
     @Transactional
     void deleteById(Long id);

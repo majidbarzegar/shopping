@@ -16,20 +16,20 @@ public class ProductDto extends AbstractDto<Long> {
     private String description;
     private Long price;
     private Long categoryId;
+
     @JsonProperty("images")
     private List<String> imageUrls;
 
+    @JsonProperty("likes")
+    private Integer likeCount;
 
-
-    private Integer likes;
+    @JsonProperty("isLike")
     private boolean isLike;
-    private Float rate;
 
-    public void addImageUrl(String imageUrl){
-        if(null == imageUrls){
-            imageUrls = new ArrayList<>();
-        }
-        imageUrls.add(imageUrl);
+    @JsonProperty("rate")
+    private Float averageRating;
+
+    public boolean isLike() {
+        return null != likeCount && likeCount > 0;
     }
-
 }

@@ -8,7 +8,7 @@ import com.penovatech.shopping.model.User;
 
 import java.util.Optional;
 
-public interface UserService extends AbstractService<User, UserCriteria, UserDto, Long> {
+public interface UserService extends AbstractService<User, Long> {
 
     String register(RegisterRequest request);
 

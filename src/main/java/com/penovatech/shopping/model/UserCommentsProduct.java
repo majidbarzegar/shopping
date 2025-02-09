@@ -1,6 +1,7 @@
 package com.penovatech.shopping.model;
 
 
+import com.penovatech.common.model.AbstractPersistable;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -14,11 +15,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @SequenceGenerator(name = "sequence", sequenceName = "USER_COMMENTS_PRODUCT_SEQ", allocationSize = 1)
-public class UserCommentsProduct {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
-    private Long id;
+public class UserCommentsProduct extends AbstractPersistable<Long> {
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)

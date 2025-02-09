@@ -1,9 +1,8 @@
 package com.penovatech.shopping.controller;
 
-import com.penovatech.common.base.controller.AbstractRestController;
 import com.penovatech.common.dto.ResultDto;
-import com.penovatech.shopping.criteria.ProductCriteria;
 import com.penovatech.shopping.dto.ProductDto;
+import com.penovatech.shopping.mapper.ProductMapper;
 import com.penovatech.shopping.model.Product;
 import com.penovatech.shopping.service.CommentService;
 import com.penovatech.shopping.service.ProductService;
@@ -20,18 +19,21 @@ import java.util.List;
 @RequestMapping("/api/v1/product")
 public class ProductRestController /*extends AbstractRestController<Product, ProductCriteria, ProductDto, Long, ProductService>*/ {
 
-    public ProductRestController(ProductService service, CommentService commentService) {
+    public ProductRestController(ProductService service, CommentService commentService, ProductMapper mapper) {
         this.commentService = commentService;
         this.service = service;
+        this.mapper = mapper;
     }
 
     private final CommentService commentService;
     private final ProductService service;
+    private final ProductMapper mapper;
 
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResultDto<Product> save(@RequestParam("dto") String dtoJson,
                                    @RequestParam("file") List<MultipartFile> files) throws JsonProcessingException {
-        return new ResultDto<>(service.save(new ObjectMapper().readValue(dtoJson, ProductDto.class), files));
+        ProductDto productDto = new ObjectMapper().readValue(dtoJson, ProductDto.class);
+        return new ResultDto<>(service.save(mapper.toModel(productDto), files));
     }
 
     @PostMapping("/{productId}/like")

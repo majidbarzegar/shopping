@@ -21,6 +21,4 @@ public class HomeDataResponse {
 
     @JsonProperty("most_sale")
     private List<ProductDto> mostSale;
-
-
 }

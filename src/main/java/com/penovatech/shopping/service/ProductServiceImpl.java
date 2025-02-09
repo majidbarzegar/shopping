@@ -1,6 +1,8 @@
 package com.penovatech.shopping.service;
 
+import com.penovatech.common.base.criteria.SpecPredicateBuilder;
 import com.penovatech.common.base.service.AbstractServiceImpl;
+import com.penovatech.common.base.service.AbstractSpecServiceImpl;
 import com.penovatech.common.utils.DateUtility;
 import com.penovatech.shopping.criteria.ProductCriteria;
 import com.penovatech.shopping.dto.ProductDto;
@@ -20,49 +22,56 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
-public class ProductServiceImpl extends AbstractServiceImpl<Product, ProductCriteria, ProductDto, Long, ProductRepository> implements ProductService {
+public class ProductServiceImpl extends AbstractSpecServiceImpl<Product, Long, ProductCriteria, ProductRepository> implements ProductService {
     public ProductServiceImpl(ProductRepository repository,
                               ProductMapper mapper,
                               UserRatesProductRepository rateRepository,
                               UserLikesProductRepository likeRepository) {
-        super(repository, mapper);
+        super(repository);
         this.rateRepository = rateRepository;
         this.likeRepository = likeRepository;
     }
 
     private final UserRatesProductRepository rateRepository;
     private final UserLikesProductRepository likeRepository;
-    @Value("${file.upload-dir}")
-    private String uploadDir;
+    @Value("${image.upload.dir}")
+    private String imageUploadDir;
+    @Value("${image.base.url}")
+    private String imageBaseUrl;
 
     @Override
-    public Product save(ProductDto dto, List<MultipartFile> files) {
+    protected void addSpec(SpecPredicateBuilder<Product> predicateBuilder, ProductCriteria criteria) {
+        predicateBuilder.greaterThanOrEqualTo(Product_.CREATED_DATE, criteria.getCreatedDateFrom(), null != criteria.getCreatedDateFrom());
+    }
+
+    @Override
+    public Product save(Product model, List<MultipartFile> files) {
         try {
             for (MultipartFile file : files) {
-                dto.addImageUrl(this.saveFile(file));
+                model.addImageUrl(this.saveFile(file));
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return super.save(dto);
+        return super.save(model);
     }
 
     public String saveFile(MultipartFile file) throws IOException {
-        File uploadPath = new File(uploadDir);
+        File uploadPath = new File(imageUploadDir);
         if (!uploadPath.exists()) {
             uploadPath.mkdirs();
         }
         String fileName = DateUtility.nowToTimestampFormat() + "_" + file.getOriginalFilename();
-        String filePath = uploadDir + File.separator + fileName;
+        String filePath = imageUploadDir + File.separator + fileName;
         file.transferTo(new File(filePath));
-        return filePath;
+        return imageBaseUrl + fileName;
     }
 
     @Override
     public List<Product> getNewest() {
         ProductCriteria criteria = new ProductCriteria();
         criteria.setCreatedDateFrom(LocalDateTime.now().minusDays(7));
-        return this.get(criteria);
+        return this.findAll(criteria);
     }
 
     @Transactional

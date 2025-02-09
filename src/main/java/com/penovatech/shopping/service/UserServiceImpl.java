@@ -2,9 +2,7 @@ package com.penovatech.shopping.service;
 
 import com.penovatech.common.base.service.AbstractServiceImpl;
 import com.penovatech.shopping.config.JwtTokenProvider;
-import com.penovatech.shopping.criteria.UserCriteria;
 import com.penovatech.shopping.dto.RegisterRequest;
-import com.penovatech.shopping.dto.UserDto;
 import com.penovatech.shopping.mapper.UserMapper;
 import com.penovatech.shopping.model.User;
 import com.penovatech.shopping.repository.UserRepository;
@@ -17,12 +15,12 @@ import java.util.Collections;
 import java.util.Optional;
 
 @Service
-public class UserServiceImpl extends AbstractServiceImpl<User, UserCriteria, UserDto, Long, UserRepository> implements UserService {
+public class UserServiceImpl extends AbstractServiceImpl<User, Long, UserRepository> implements UserService {
     public UserServiceImpl(UserRepository repository,
                            UserMapper mapper,
                            JwtTokenProvider jwtTokenProvider,
                            PasswordEncoder passwordEncoder) {
-        super(repository, mapper);
+        super(repository);
         this.passwordEncoder = passwordEncoder;
         this.jwtTokenProvider = jwtTokenProvider;
     }

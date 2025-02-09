@@ -5,6 +5,6 @@ import com.penovatech.shopping.criteria.BannerCriteria;
 import com.penovatech.shopping.dto.BannerDto;
 import com.penovatech.shopping.model.Banner;
 
-public interface BannerService extends AbstractService<Banner, BannerCriteria, BannerDto, Long> {
+public interface BannerService extends AbstractService<Banner, Long> {
 
 }
