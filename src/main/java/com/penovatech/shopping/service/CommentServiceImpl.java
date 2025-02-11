@@ -1,5 +1,7 @@
 package com.penovatech.shopping.service;
 
+import com.penovatech.common.exception.BusinessException;
+import com.penovatech.common.exception.CommonExceptionMessage;
 import com.penovatech.shopping.model.Product;
 import com.penovatech.shopping.model.User;
 import com.penovatech.shopping.model.UserCommentsProduct;
@@ -8,8 +10,9 @@ import com.penovatech.shopping.utils.SessionUtility;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.Optional;
+
+import static com.penovatech.shopping.exception.ShoppingExceptionMessage.USER_NOT_AUTHORIZATION;
 
 @Service
 public class CommentServiceImpl implements CommentService {
@@ -39,10 +42,10 @@ public class CommentServiceImpl implements CommentService {
     public void unCommentProduct(Long id) {
         Optional<UserCommentsProduct> comment = repository.findById(id);
         if (comment.isEmpty()) {
-            throw new RuntimeException();
+            throw new BusinessException(CommonExceptionMessage.RECOURSE_NOT_FOUND);
         }
         if (!comment.get().getUser().getId().equals(SessionUtility.getCurrentUserId())) {
-            throw new RuntimeException();
+            throw new BusinessException(USER_NOT_AUTHORIZATION);
         }
         repository.deleteById(id);
     }

@@ -19,13 +19,21 @@ public class CommentRestController {
     @PostMapping
     public ResultDto<Void> commentProduct(@RequestBody CommentDto dto) {
         service.commentProduct(SessionUtility.getCurrentUserId(), dto.getProductId(), dto.getComment());
-        return new ResultDto<>("Comment", "It is registered successfully", Boolean.TRUE);
+        return new ResultDto<>(
+                "Comment",
+                "It is registered successfully",
+                Boolean.TRUE
+        );
     }
 
     @DeleteMapping("/{commentId}")
     public ResultDto<Void> delete(@PathVariable("commentId") Long commentId) {
         service.unCommentProduct(commentId);
-        return new ResultDto<>("Comment", "Comment remove successfully", Boolean.TRUE);
+        return new ResultDto<>(
+                "Comment",
+                "Comment remove successfully",
+                Boolean.TRUE
+        );
     }
 
 }
