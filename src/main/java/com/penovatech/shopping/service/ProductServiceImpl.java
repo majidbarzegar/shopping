@@ -9,7 +9,7 @@ import com.penovatech.shopping.model.*;
 import com.penovatech.shopping.repository.ProductRepository;
 import com.penovatech.shopping.repository.UserLikesProductRepository;
 import com.penovatech.shopping.repository.UserRatesProductRepository;
-import com.penovatech.shopping.utils.FileUtility;
+import com.penovatech.shopping.utils.FileService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -23,12 +23,15 @@ public class ProductServiceImpl extends AbstractSpecServiceImpl<Product, Long, P
     public ProductServiceImpl(ProductRepository repository,
                               ProductMapper mapper,
                               UserRatesProductRepository rateRepository,
-                              UserLikesProductRepository likeRepository) {
+                              UserLikesProductRepository likeRepository,
+                              FileService fileService) {
         super(repository);
         this.rateRepository = rateRepository;
         this.likeRepository = likeRepository;
+        this.fileService = fileService;
     }
 
+    private final FileService fileService;
     private final UserRatesProductRepository rateRepository;
     private final UserLikesProductRepository likeRepository;
     @Value("${image.upload.dir}")
@@ -51,7 +54,7 @@ public class ProductServiceImpl extends AbstractSpecServiceImpl<Product, Long, P
     public Product save(Product model, List<MultipartFile> files) {
         for (MultipartFile file : files) {
             String fileName = DateUtility.nowToTimestampWithMillisFormat() + "_" + file.getOriginalFilename();
-            model.addImageUrl(FileUtility.saveFile(file, fileName));
+            model.addImageUrl(fileService.saveFile(file, fileName));
         }
         return super.save(model);
     }
