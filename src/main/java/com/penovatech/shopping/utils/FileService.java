@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 
+import static com.penovatech.shopping.exception.ShoppingExceptionMessage.CAN_NOT_DELETE_FILE;
 import static com.penovatech.shopping.exception.ShoppingExceptionMessage.CAN_NOT_SAVE_FILE;
 
 @Component
@@ -30,5 +31,18 @@ public class FileService {
             throw new BusinessException(CAN_NOT_SAVE_FILE);
         }
         return imageBaseUrl + fileName;
+    }
+
+    public void deleteFile(String fileName) {
+        String filePath = imageUploadDir + File.separator + fileName.replace(imageBaseUrl, "");
+        File fileToDelete = new File(filePath);
+        if (fileToDelete.exists()) {
+            boolean isDeleted = fileToDelete.delete();
+            if (!isDeleted) {
+                throw new BusinessException(CAN_NOT_DELETE_FILE);
+            }
+        } else {
+            throw new BusinessException(CAN_NOT_DELETE_FILE);
+        }
     }
 }
