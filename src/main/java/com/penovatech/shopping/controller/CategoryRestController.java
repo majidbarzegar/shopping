@@ -72,7 +72,7 @@ public class CategoryRestController {
         return new ResultDto<>(
                 "Delete Category",
                 "Category deleted successful",
-                true
+                Boolean.TRUE
         );
     }
 

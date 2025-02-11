@@ -61,7 +61,7 @@ public class BannerRestController {
         return new ResultDto<>(
                 "Delete Banner",
                 "Banner deleted successful",
-                true
+                Boolean.TRUE
         );
     }
 

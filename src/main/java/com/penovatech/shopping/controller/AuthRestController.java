@@ -1,6 +1,7 @@
 package com.penovatech.shopping.controller;
 
 import com.penovatech.common.dto.ResultDto;
+import com.penovatech.common.exception.BusinessException;
 import com.penovatech.shopping.config.security.JwtTokenProvider;
 import com.penovatech.shopping.dto.LoginRequest;
 import com.penovatech.shopping.dto.RegisterRequest;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import static com.penovatech.shopping.exception.ShoppingExceptionMessage.INVALID_USERNAME_OR_PASSWORD;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -38,14 +41,14 @@ public class AuthRestController {
                     new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
             );
             User user = userService.findByEmail(request.getEmail())
-                    .orElseThrow(() -> new RuntimeException("User not found"));
+                    .orElseThrow(() -> new BusinessException(INVALID_USERNAME_OR_PASSWORD));
             return new ResultDto<>(
                     jwtTokenProvider.generateToken(authentication, user.getId()),
                     "Login",
                     "Login successful"
             );
         } catch (AuthenticationException e) {
-            throw new RuntimeException("Invalid username or password");
+            throw new BusinessException(INVALID_USERNAME_OR_PASSWORD);
         }
     }
 
