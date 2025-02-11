@@ -1,4 +1,4 @@
-package com.penovatech.shopping.config;
+package com.penovatech.shopping.config.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

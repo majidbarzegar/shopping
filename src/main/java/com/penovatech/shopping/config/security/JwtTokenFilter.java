@@ -1,4 +1,4 @@
-package com.penovatech.shopping.config;
+package com.penovatech.shopping.config.security;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

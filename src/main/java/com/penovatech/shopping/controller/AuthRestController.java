@@ -1,7 +1,7 @@
 package com.penovatech.shopping.controller;
 
 import com.penovatech.common.dto.ResultDto;
-import com.penovatech.shopping.config.JwtTokenProvider;
+import com.penovatech.shopping.config.security.JwtTokenProvider;
 import com.penovatech.shopping.dto.LoginRequest;
 import com.penovatech.shopping.dto.RegisterRequest;
 import com.penovatech.shopping.model.User;

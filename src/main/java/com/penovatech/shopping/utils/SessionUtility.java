@@ -1,6 +1,6 @@
 package com.penovatech.shopping.utils;
 
-import com.penovatech.shopping.config.UserPrincipal;
+import com.penovatech.shopping.config.security.UserPrincipal;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 

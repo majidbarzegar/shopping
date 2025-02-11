@@ -11,6 +11,7 @@ import com.penovatech.shopping.model.*;
 import com.penovatech.shopping.repository.ProductRepository;
 import com.penovatech.shopping.repository.UserLikesProductRepository;
 import com.penovatech.shopping.repository.UserRatesProductRepository;
+import com.penovatech.shopping.utils.FileUtility;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -46,25 +47,11 @@ public class ProductServiceImpl extends AbstractSpecServiceImpl<Product, Long, P
 
     @Override
     public Product save(Product model, List<MultipartFile> files) {
-        try {
-            for (MultipartFile file : files) {
-                model.addImageUrl(this.saveFile(file));
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        for (MultipartFile file : files) {
+            String fileName = DateUtility.nowToTimestampWithMillisFormat() + "_" + file.getOriginalFilename();
+            model.addImageUrl(FileUtility.saveFile(file, fileName));
         }
         return super.save(model);
-    }
-
-    public String saveFile(MultipartFile file) throws IOException {
-        File uploadPath = new File(imageUploadDir);
-        if (!uploadPath.exists()) {
-            uploadPath.mkdirs();
-        }
-        String fileName = DateUtility.nowToTimestampFormat() + "_" + file.getOriginalFilename();
-        String filePath = imageUploadDir + File.separator + fileName;
-        file.transferTo(new File(filePath));
-        return imageBaseUrl + fileName;
     }
 
     @Override

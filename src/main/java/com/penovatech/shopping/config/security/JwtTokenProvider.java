@@ -1,4 +1,4 @@
-package com.penovatech.shopping.config;
+package com.penovatech.shopping.config.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

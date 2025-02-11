@@ -1,7 +1,7 @@
 package com.penovatech.shopping.service;
 
 import com.penovatech.common.base.service.AbstractServiceImpl;
-import com.penovatech.shopping.config.JwtTokenProvider;
+import com.penovatech.shopping.config.security.JwtTokenProvider;
 import com.penovatech.shopping.dto.RegisterRequest;
 import com.penovatech.shopping.mapper.UserMapper;
 import com.penovatech.shopping.model.User;

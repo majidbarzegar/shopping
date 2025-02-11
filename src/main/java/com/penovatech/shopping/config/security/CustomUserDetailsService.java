@@ -1,4 +1,4 @@
-package com.penovatech.shopping.config;
+package com.penovatech.shopping.config.security;
 
 import com.penovatech.shopping.repository.UserRepository;
 import org.springframework.security.core.userdetails.User;
