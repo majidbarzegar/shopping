@@ -13,6 +13,4 @@ public class CategoryDto extends AbstractDto<Long> {
     private Long parentId;
     @JsonProperty("icon")
     private String iconUrl;
-    @JsonProperty("dark_icon")
-    private String darkIconUrl;
 }

@@ -31,8 +31,6 @@ public class Category extends AbstractPersistable<Long> {
 
     private String iconUrl;
 
-    private String darkIconUrl;
-
     @OneToMany(mappedBy = "parentCategory", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Category> childCategories = new ArrayList<>();
 }

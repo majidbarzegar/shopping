@@ -1,6 +1,5 @@
 package com.penovatech.shopping.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.penovatech.common.dto.ResultDto;
 import com.penovatech.common.exception.BusinessException;
 import com.penovatech.common.exception.CommonExceptionMessage;
@@ -32,7 +31,7 @@ public class BannerRestController {
     private final BannerMapper mapper;
 
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResultDto<BannerDto> save(@RequestParam("file") MultipartFile file) throws JsonProcessingException {
+    public ResultDto<BannerDto> save(@RequestParam("file") MultipartFile file) {
         return new ResultDto<>(
                 mapper.toDto(service.save(file)),
                 "Save Banner",

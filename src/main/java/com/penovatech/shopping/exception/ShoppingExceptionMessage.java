@@ -3,7 +3,8 @@ package com.penovatech.shopping.exception;
 import com.penovatech.common.exception.ExceptionMessage;
 
 public enum ShoppingExceptionMessage implements ExceptionMessage {
-    CAN_NOT_SAVE_FILE(1001, "CAN_NOT_SAVE_FILE")
+    CAN_NOT_SAVE_FILE(1001, "CAN_NOT_SAVE_FILE"),
+    INVALID_JSON_INPUT(1002, "INVALID_JSON_INPUT")
     ;
 
     private Integer code;
