@@ -1,11 +1,9 @@
 package com.penovatech.shopping.service;
 
 import com.penovatech.common.base.criteria.SpecPredicateBuilder;
-import com.penovatech.common.base.service.AbstractServiceImpl;
 import com.penovatech.common.base.service.AbstractSpecServiceImpl;
 import com.penovatech.common.utils.DateUtility;
 import com.penovatech.shopping.criteria.ProductCriteria;
-import com.penovatech.shopping.dto.ProductDto;
 import com.penovatech.shopping.mapper.ProductMapper;
 import com.penovatech.shopping.model.*;
 import com.penovatech.shopping.repository.ProductRepository;
@@ -17,8 +15,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -43,6 +39,12 @@ public class ProductServiceImpl extends AbstractSpecServiceImpl<Product, Long, P
     @Override
     protected void addSpec(SpecPredicateBuilder<Product> predicateBuilder, ProductCriteria criteria) {
         predicateBuilder.greaterThanOrEqualTo(Product_.CREATED_DATE, criteria.getCreatedDateFrom(), null != criteria.getCreatedDateFrom());
+        predicateBuilder.equal(Product_.TITLE, criteria.getTitle(), null != criteria.getTitle());
+        predicateBuilder.like(Product_.TITLE, criteria.getTitleLike(), null != criteria.getTitleLike());
+        predicateBuilder.equal(Product_.PRICE, criteria.getPrice(), null != criteria.getPrice());
+        predicateBuilder.greaterThanOrEqualTo(Product_.PRICE, criteria.getPriceFrom(), null != criteria.getPriceFrom());
+        predicateBuilder.lessThanOrEqualTo(Product_.PRICE, criteria.getPriceTo(), null != criteria.getPriceTo());
+        predicateBuilder.equal("category.id", criteria.getCategoryId(), null != criteria.getCategoryId());
     }
 
     @Override

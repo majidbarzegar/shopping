@@ -10,4 +10,10 @@ import java.time.LocalDateTime;
 @Setter
 public class ProductCriteria extends AbstractCriteria<Long> {
     private LocalDateTime createdDateFrom;
+    private String title;
+    private String titleLike;
+    private Long price;
+    private Long priceFrom;
+    private Long priceTo;
+    private Long categoryId;
 }
