@@ -1,6 +1,7 @@
 package com.penovatech.shopping.service;
 
 import com.penovatech.common.base.service.AbstractServiceImpl;
+import com.penovatech.common.exception.BusinessException;
 import com.penovatech.shopping.config.security.JwtTokenProvider;
 import com.penovatech.shopping.dto.RegisterRequest;
 import com.penovatech.shopping.mapper.UserMapper;
@@ -13,6 +14,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.Optional;
+
+import static com.penovatech.shopping.exception.ShoppingExceptionMessage.USER_WITH_THIS_EMAIL_IS_EXIST;
 
 @Service
 public class UserServiceImpl extends AbstractServiceImpl<User, Long, UserRepository> implements UserService {
@@ -30,6 +33,10 @@ public class UserServiceImpl extends AbstractServiceImpl<User, Long, UserReposit
 
     @Override
     public String register(RegisterRequest request) {
+        Optional<User> existUser = this.findByEmail(request.getEmail());
+        if (existUser.isPresent()) {
+            throw new BusinessException(USER_WITH_THIS_EMAIL_IS_EXIST);
+        }
         User user = new User();
         user.setEmail(request.getEmail());
         user.setPassword(passwordEncoder.encode(request.getPassword())); // Hash the password

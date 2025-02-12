@@ -11,6 +11,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -53,7 +54,7 @@ public class AuthRestController {
     }
 
     @PostMapping("register")
-    public ResultDto<String> register(@RequestBody RegisterRequest request) {
+    public ResultDto<String> register(@RequestBody @Validated RegisterRequest request) {
         return new ResultDto<>(
                 userService.register(request),
                 "Registration",
