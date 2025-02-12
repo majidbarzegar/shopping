@@ -1,9 +1,7 @@
 package com.penovatech.shopping.service;
 
-import com.penovatech.common.base.service.AbstractService;
 import com.penovatech.common.base.service.AbstractSpecService;
 import com.penovatech.shopping.criteria.ProductCriteria;
-import com.penovatech.shopping.dto.ProductDto;
 import com.penovatech.shopping.model.Product;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -26,4 +24,8 @@ public interface ProductService extends AbstractSpecService<Product, Long, Produ
     long getProductLikeCount(Long productId);
 
     Double getProductAverageRating(Long productId);
+
+    Long findMinPrice();
+
+    Long findMaxPrice();
 }

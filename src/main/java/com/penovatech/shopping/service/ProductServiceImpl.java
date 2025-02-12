@@ -98,4 +98,12 @@ public class ProductServiceImpl extends AbstractSpecServiceImpl<Product, Long, P
     public Double getProductAverageRating(Long productId) {
         return rateRepository.findAverageRatingByProductId(productId);
     }
+
+    public Long findMinPrice() {
+        return repository.findMinPrice();
+    }
+
+    public Long findMaxPrice() {
+        return repository.findMaxPrice();
+    }
 }
