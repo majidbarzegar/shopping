@@ -1,12 +1,10 @@
 package com.penovatech.shopping.dto;
 
-import com.penovatech.common.model.AbstractDto;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.penovatech.common.model.AbstractDto;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -19,6 +17,7 @@ public class ProductDto extends AbstractDto<Long> {
 
     @JsonProperty("images")
     private List<String> imageUrls;
+    private String image;
 
     @JsonProperty("likes")
     private Integer likeCount;
@@ -31,5 +30,9 @@ public class ProductDto extends AbstractDto<Long> {
 
     public boolean isLike() {
         return null != likeCount && likeCount > 0;
+    }
+
+    public String getImage() {
+        return imageUrls.getFirst();
     }
 }

@@ -1,5 +1,6 @@
 package com.penovatech.shopping.dto;
 
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -13,6 +14,7 @@ public class RegisterRequest {
     private String name;
 
     @NotBlank
+    @Email(message = "INVALID_EMAIL_FORMAT")
     private String email;
 
     @NotBlank
