@@ -139,7 +139,7 @@ public class ProductRestController {
         );
     }
 
-    @PostMapping("/{productId}/like")
+    @GetMapping("/{productId}/like")
     public ResultDto<Void> likeProduct(@PathVariable Long productId) {
         service.likeProduct(SessionUtility.getCurrentUserId(), productId);
         return new ResultDto<>(

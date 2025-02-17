@@ -6,6 +6,9 @@ import com.penovatech.shopping.model.FlashSale;
 import com.penovatech.shopping.model.Product;
 import org.mapstruct.*;
 
+import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,6 +47,20 @@ public interface CreateFlashSaleMapper extends BaseMapper<FlashSale, CreateFlash
             return new ArrayList<>();
         }
         return products.stream().map(Product::getId).toList();
+    }
+
+    default OffsetDateTime map(LocalDateTime localDateTime) {
+        if (localDateTime == null) {
+            return null;
+        }
+        return localDateTime.atOffset(ZoneOffset.UTC);
+    }
+
+    default LocalDateTime map(OffsetDateTime offsetDateTime) {
+        if (offsetDateTime == null) {
+            return null;
+        }
+        return offsetDateTime.toLocalDateTime();
     }
 }
 

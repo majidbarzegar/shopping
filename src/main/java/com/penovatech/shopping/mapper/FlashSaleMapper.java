@@ -43,7 +43,7 @@ public interface FlashSaleMapper extends BaseMapper<FlashSale, FlashSaleDto> {
         if (offsetDateTime == null) {
             return null;
         }
-        return offsetDateTime.toLocalDateTime(); // Convert to LocalDateTime
+        return offsetDateTime.toLocalDateTime();
     }
 }
 

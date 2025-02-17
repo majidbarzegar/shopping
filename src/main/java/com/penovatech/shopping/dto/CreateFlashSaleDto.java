@@ -7,16 +7,17 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.List;
 
 @Getter
 @Setter
 public class CreateFlashSaleDto extends AbstractDto<Long> {
     @JsonProperty("expire_at")
-    private LocalDateTime expireAt;
+    private OffsetDateTime expireAt;
 
     @JsonProperty("start_at")
-    private LocalDateTime startAt;
+    private OffsetDateTime startAt;
 
     @JsonProperty("productIds")
     private List<Long> productIdList;
