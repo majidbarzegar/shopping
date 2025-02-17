@@ -18,6 +18,8 @@ public class FileService {
     private String imageUploadDir;
     @Value("${image.base.url}")
     private String imageBaseUrl;
+    @Value("${image.server.url}")
+    private String imageServerUrl;
 
     public String saveFile(MultipartFile file, String fileName) {
         File uploadPath = new File(imageUploadDir);
@@ -30,7 +32,7 @@ public class FileService {
         } catch (IOException e) {
             throw new BusinessException(CAN_NOT_SAVE_FILE);
         }
-        return imageBaseUrl + fileName;
+        return imageServerUrl + imageBaseUrl + fileName;
     }
 
     public void deleteFile(String fileName) {

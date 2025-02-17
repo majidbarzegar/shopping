@@ -12,6 +12,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import java.time.ZoneOffset;
 import java.util.List;
 
 @Service
@@ -59,7 +60,7 @@ public class HomeServiceImpl implements HomeService {
 
     private FlashSaleDto toFlashSaleDto(FlashSale flashSale) {
         FlashSaleDto dto = new FlashSaleDto();
-        dto.setExpireAt(flashSale.getExpireAt());
+        dto.setExpireAt(flashSale.getExpireAt().atOffset(ZoneOffset.UTC));
         dto.setProductDtoList(productMapper.toDtoList(flashSale.getProductList()));
         return dto;
     }

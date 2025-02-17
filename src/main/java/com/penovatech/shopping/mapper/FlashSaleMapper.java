@@ -5,6 +5,9 @@ import com.penovatech.shopping.dto.FlashSaleDto;
 import com.penovatech.shopping.model.FlashSale;
 import org.mapstruct.*;
 
+import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 import java.util.List;
 
 @Mapper(
@@ -28,5 +31,19 @@ public interface FlashSaleMapper extends BaseMapper<FlashSale, FlashSaleDto> {
 
     @InheritConfiguration(name = "toModel")
     void updateModelFromDto(@MappingTarget FlashSale model, FlashSaleDto dto);
+
+    default OffsetDateTime map(LocalDateTime localDateTime) {
+        if (localDateTime == null) {
+            return null;
+        }
+        return localDateTime.atOffset(ZoneOffset.UTC);
+    }
+
+    default LocalDateTime map(OffsetDateTime offsetDateTime) {
+        if (offsetDateTime == null) {
+            return null;
+        }
+        return offsetDateTime.toLocalDateTime(); // Convert to LocalDateTime
+    }
 }
 

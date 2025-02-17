@@ -36,8 +36,6 @@ public class ProductServiceImpl extends AbstractSpecServiceImpl<Product, Long, P
     private final UserLikesProductRepository likeRepository;
     @Value("${image.upload.dir}")
     private String imageUploadDir;
-    @Value("${image.base.url}")
-    private String imageBaseUrl;
 
     @Override
     protected void addSpec(SpecPredicateBuilder<Product> predicateBuilder, ProductCriteria criteria) {
