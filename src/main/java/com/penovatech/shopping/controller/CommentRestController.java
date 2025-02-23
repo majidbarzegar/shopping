@@ -4,15 +4,13 @@ import com.penovatech.common.dto.ResultDto;
 import com.penovatech.shopping.dto.CommentDto;
 import com.penovatech.shopping.service.CommentService;
 import com.penovatech.shopping.utils.SessionUtility;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/comment")
+@RequiredArgsConstructor
 public class CommentRestController {
-
-    public CommentRestController(CommentService service) {
-        this.service = service;
-    }
 
     private final CommentService service;
 

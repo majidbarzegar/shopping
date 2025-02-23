@@ -7,6 +7,7 @@ import com.penovatech.shopping.dto.LoginRequest;
 import com.penovatech.shopping.dto.RegisterRequest;
 import com.penovatech.shopping.model.User;
 import com.penovatech.shopping.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -21,19 +22,13 @@ import static com.penovatech.shopping.exception.ShoppingExceptionMessage.INVALID
 
 @RestController
 @RequestMapping("/api/v1")
+@RequiredArgsConstructor
 public class AuthRestController {
 
     private final AuthenticationManager authenticationManager;
     private final JwtTokenProvider jwtTokenProvider;
     private final UserService userService;
 
-    public AuthRestController(AuthenticationManager authenticationManager,
-                              JwtTokenProvider jwtTokenProvider,
-                              UserService userService) {
-        this.authenticationManager = authenticationManager;
-        this.jwtTokenProvider = jwtTokenProvider;
-        this.userService = userService;
-    }
 
     @PostMapping("login")
     public ResultDto<String> login(@RequestBody LoginRequest request) {
