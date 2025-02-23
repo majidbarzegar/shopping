@@ -11,7 +11,7 @@ public enum ShoppingExceptionMessage implements ExceptionMessage {
     USER_WITH_THIS_EMAIL_IS_EXIST(1006),
     ;
 
-    private Integer code;
+    private final Integer code;
 
     ShoppingExceptionMessage(Integer code) {
         this.code = code;
