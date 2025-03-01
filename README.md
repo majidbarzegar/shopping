@@ -40,15 +40,22 @@ If you find this project useful, please consider giving it a **star** on GitHub.
 
 ## Installation Steps
 
-1. **Clone the repository**:
+1. **Clone the Common repository**:
+   ```sh
+   git clone https://github.com/majidbarzegar/commons.git
+   cd commons
+2. **Build project
+   mvn clean install
+
+3. **Clone the Shopping repository**:
    ```sh
    git clone https://github.com/majidbarzegar/shopping.git
    cd shopping
    ```
-2. **Configure the database**:
+4. **Configure the database**:
    - Create a PostgreSQL database.
    - Update `application.properties` with database credentials.
-3. **Build and run the project**:
+5. **Build and run the project**:
    ```sh
    mvn clean install
    mvn spring-boot:run
