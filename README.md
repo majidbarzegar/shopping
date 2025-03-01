@@ -42,8 +42,8 @@ If you find this project useful, please consider giving it a **star** on GitHub.
 
 1. **Clone the repository**:
    ```sh
-   git clone https://github.com/your-repo/shopping-api.git
-   cd shopping-api
+   git clone https://github.com/majidbarzegar/shopping.git
+   cd shopping
    ```
 2. **Configure the database**:
    - Create a PostgreSQL database.
