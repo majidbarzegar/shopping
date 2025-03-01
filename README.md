@@ -44,7 +44,7 @@ If you find this project useful, please consider giving it a **star** on GitHub.
    ```sh
    git clone https://github.com/majidbarzegar/commons.git
    cd commons
-2. **Build project
+2. **Build project**:
    mvn clean install
 
 3. **Clone the Shopping repository**:
