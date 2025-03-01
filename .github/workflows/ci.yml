@@ -2,16 +2,25 @@ name: CI/CD Pipeline
 
 on:
   push:
+    branches:
+      - main  # Trigger on push to the main branch
   pull_request:
+    branches:
+      - main  # Trigger on pull requests targeting the main branch
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
+      # Step 1: Check out the commons repository
+      - name: Checkout Commons Repository
         uses: actions/checkout@v4
+        with:
+          repository: majidbarzegar/commons  # Replace with your commons repo
+          path: commons  # Check out the commons repo into a subdirectory
 
+      # Step 2: Set up JDK 21
       - name: Set up JDK 21
         uses: actions/setup-java@v3
         with:
@@ -19,11 +28,20 @@ jobs:
           java-version: '21'
           cache: 'maven'
 
-      - name: Install Dependencies
-        run: mvn clean install -DskipTests
+      # Step 3: Build and install the commons project
+      - name: Build Commons Project
+        run: |
+          cd commons
+          mvn clean install -DskipTests
 
-      - name: Run Tests
-        run: mvn test
+      # Step 4: Check out the main project repository
+      - name: Checkout Main Repository
+        uses: actions/checkout@v4
+        with:
+          path: main-project  # Check out the main project into a subdirectory
 
-      - name: Build Project
-        run: mvn package
+      # Step 5: Build and test the main project
+      - name: Build and Test Main Project
+        run: |
+          cd main-project
+          mvn clean install
