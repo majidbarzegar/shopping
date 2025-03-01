@@ -56,7 +56,9 @@ If you find this project useful, please consider giving it a **star** on GitHub.
    cd shopping
    ```
 4. **Configure the Database**:
-5. **Build and Run the Shopping Project**:
+   - Create a PostgreSQL database.
+   - Update `application.properties` with database credentials.
+6. **Build and Run the Shopping Project**:
    ```sh
    mvn clean install
    mvn spring-boot:run
