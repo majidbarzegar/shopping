@@ -45,17 +45,17 @@ If you find this project useful, please consider giving it a **star** on GitHub.
    git clone https://github.com/majidbarzegar/commons.git
    cd commons
 2. **Build project**:
+   ```sh
    mvn clean install
-
-3. **Clone the Shopping repository**:
+4. **Clone the Shopping repository**:
    ```sh
    git clone https://github.com/majidbarzegar/shopping.git
    cd shopping
    ```
-4. **Configure the database**:
+5. **Configure the database**:
    - Create a PostgreSQL database.
    - Update `application.properties` with database credentials.
-5. **Build and run the project**:
+6. **Build and run the project**:
    ```sh
    mvn clean install
    mvn spring-boot:run
