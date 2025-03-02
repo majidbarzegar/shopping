@@ -99,16 +99,6 @@ mvn test
 
 ---
 
-## Contact
-
-For questions or feedback, please reach out to:
-
-- **Majid Barzegar**  
-- Email: majidbarzegar.a@gmail.com
-- GitHub: [majidbarzegar](https://github.com/majidbarzegar)
-
----
-
 Feel free to contribute and improve this project!
 
 
